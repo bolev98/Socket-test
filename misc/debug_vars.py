@@ -1,0 +1,2 @@
+printRecievedMessages = False # Defines if the server shold either print messages which it recieves in it's terminal or no
+printSoftShutInfo = True # Defines if the server should announce events such as unexpected client disconnect without proper shutdown
