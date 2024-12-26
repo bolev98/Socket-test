@@ -28,11 +28,7 @@ def listenForIncomingMessage(client, address):
     while True:
         try:
             message = client.recv(1024).decode()
-        except ConnectionAbortedError:
-            if debug_vars.printSoftShutInfo:
-                print(f"[DEBUG] [{address[1]}]: Force-disconnected.")
-            break
-        except ConnectionResetError:
+        except:
             if debug_vars.printSoftShutInfo:
                 print(f"[DEBUG] [{address[1]}]: Force-disconnected.")
             break

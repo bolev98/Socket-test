@@ -3,21 +3,19 @@ from time import sleep
 import socketinfo
 import threading as coroutine
 
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect((socketinfo.HOST, socketinfo.PORT))
+try:
+    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client.connect((socketinfo.HOST, socketinfo.PORT))
+except:
+    print(f"Couldn't connect to the server at port {socketinfo.PORT}. Maybe run server file first?")
+    sleep(4)
+    exit()
 
 is_active = True
 count_recentRequests = 0
 
 print(f"Connected to [{socketinfo.HOST}:{socketinfo.PORT}]")
 print("Write /help for the list of commands.")
-
-# def checkForDeath():
-#     try:
-#         data = client.recv(16)
-#     except ConnectionResetError:
-#         print("[DEBUG]: Looks like this socket unexpectedly closed")
-#         return True
 
 def spamPrevent_thread():
     global count_recentRequests
